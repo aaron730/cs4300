@@ -1,4 +1,4 @@
-def postitiveOrNegative(x):
+def postitive_or_negative(x):
     if x > 0:
         return "Postive"
     elif x < 0:
@@ -7,7 +7,7 @@ def postitiveOrNegative(x):
          return "Zero"
 
 
-def printPrimes():
+def print_primes():
     primes = []
     num = 2
     for _ in range(100):
@@ -21,7 +21,7 @@ def printPrimes():
         num += 1
     return primes
 
-def whileSum():
+def while_sum():
     num = 1
     sum = 0
     while(num <= 100):
