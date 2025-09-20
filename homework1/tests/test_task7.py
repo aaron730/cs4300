@@ -1,5 +1,5 @@
 
-import homework1.src.task7 as task7
+import src.task7 as task7
 
 def test_choose_two(monkeypatch, capsys):
     # Mock input to choose "2"

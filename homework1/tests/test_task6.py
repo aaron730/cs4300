@@ -1,5 +1,5 @@
 import pytest
-from homework1.src.task6 import count_words
+from src.task6 import count_words
 
 @pytest.mark.parametrize("filename, expected_count", [
     ("task6_read_me.txt", 127),

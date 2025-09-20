@@ -1,4 +1,4 @@
-import homework1.src.task5 as task5
+import src.task5 as task5
 import subprocess
 
 def test_favorite_books_len():
@@ -6,7 +6,7 @@ def test_favorite_books_len():
 
 def test_top3():
     result = subprocess.run(
-        ["python", "/home/student/cs4300/Homework1/homework1/src/task5.py"],
+        ["python", "/home/student/cs4300/homework1/src/task5.py"],
         capture_output=True,
         text=True
     )

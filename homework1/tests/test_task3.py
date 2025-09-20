@@ -1,4 +1,4 @@
-from homework1.src.task3 import postitive_or_negative, print_primes, while_sum
+from src.task3 import postitive_or_negative, print_primes, while_sum
 
 def test_postitive_or_negative():
     assert postitive_or_negative(10) == "Postive"

@@ -1,4 +1,4 @@
-from homework1.src.task4 import calculate_discount
+from src.task4 import calculate_discount
 
 def test_wholeNumber():
     assert calculate_discount(10, 50) == 5

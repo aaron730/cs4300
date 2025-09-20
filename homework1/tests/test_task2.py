@@ -1,4 +1,4 @@
-from homework1.src.task2 import get_integer, get_floating, get_string, get_boolean
+from src.task2 import get_integer, get_floating, get_string, get_boolean
 
 def test_task2_integer():
     assert isinstance(get_integer(), int)
