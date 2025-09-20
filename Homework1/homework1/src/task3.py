@@ -1,3 +1,4 @@
+#Returns if a number x is positive, negative or Zero
 def postitive_or_negative(x):
     if x > 0:
         return "Postive"
@@ -6,7 +7,7 @@ def postitive_or_negative(x):
     else:
          return "Zero"
 
-
+#returns first 10 prime numbers
 def print_primes():
     primes = []
     num = 2
@@ -21,6 +22,7 @@ def print_primes():
         num += 1
     return primes
 
+#returns the  sum of each number between 1 and 100
 def while_sum():
     num = 1
     sum = 0

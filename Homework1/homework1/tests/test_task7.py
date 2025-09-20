@@ -17,6 +17,6 @@ def test_choose_two(monkeypatch, capsys):
     # Capture output
     out, _ = capsys.readouterr()
 
-    # Assertions
+    # 
     assert "You chose Charmander" in out
     assert "Type(s): Fire" in out

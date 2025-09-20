@@ -1,9 +1,10 @@
+#Initilized variables
 var_integer = 2
 var_floating = 2.2
 var_string = "Two" 
 var_boolean = True
 
-
+#Methods for returning each variable type
 def get_integer():
     return var_integer
 

@@ -1,3 +1,4 @@
+#List of favorite books and their author
 favorite_books = [
     ("East of Eden", "John Stienbeck"),
     ("The Anthropocene Reviewed", "John Green"),
@@ -6,8 +7,10 @@ favorite_books = [
     ("God Emporer of Dune", "Frank Herbert")
 ]
 
+#Prints the top 3 books in list favorite_books
 print([book[0] for book in favorite_books[:3]])
 
+#A dictionary of ids and students
 student_db = {
     0: "Aaron",
     1: "Quinn",
