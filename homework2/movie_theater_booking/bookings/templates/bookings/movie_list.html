@@ -1,0 +1,19 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Available Movies</h2>
+<div class="row">
+    {% for movie in movies %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="card-text">{{ movie.description }}</p>
+                <p><strong>Release:</strong> {{ movie.release_date }}</p>
+                <p><strong>Duration:</strong> {{ movie.duration }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

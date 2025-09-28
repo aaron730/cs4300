@@ -1,0 +1,23 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+<h2>Your Booking History</h2>
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Seat</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.movie.title }}</td>
+            <td>{{ booking.seat.seat_number }}</td>
+            <td>{{ booking.booking_date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

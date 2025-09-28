@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import MovieViewSet, SeatViewSet, BookingViewSet
+from .views import MovieViewSet, SeatViewSet, BookingViewSet, movie_list, booking_history
 
 router = DefaultRouter()
 router.register(r'movies', MovieViewSet)
@@ -8,5 +8,7 @@ router.register(r'seats', SeatViewSet)
 router.register(r'bookings', BookingViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', movie_list, name='movie_list'),  # Home page
+    path('api/', include(router.urls)),       # API endpoints
+    path('history/', booking_history, name='booking_history'),
 ]

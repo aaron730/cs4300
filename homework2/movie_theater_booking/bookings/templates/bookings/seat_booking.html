@@ -1,0 +1,17 @@
+{% extends 'bookings/base.html' %}
+
+{% block content %}
+<h2>Book a Seat for <em>{{ movie.title }}</em></h2>
+<form method="post" class="mt-3">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="seat" class="form-label">Choose a seat:</label>
+        <select name="seat" id="seat" class="form-select">
+            {% for seat in seats %}
+                <option value="{{ seat.id }}">{{ seat.seat_number }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Confirm Booking</button>
+</form>
+{% endblock %}
