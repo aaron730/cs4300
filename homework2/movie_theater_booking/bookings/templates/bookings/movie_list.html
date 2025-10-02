@@ -8,6 +8,9 @@
         <div class="card h-100">
             <div class="card-body">
                 <h5 class="card-title">{{ movie.title }}</h5>
+                <p>
+                    <a href="{% url 'seat_booking' movie.id %}" class="btn btn-primary">Book Now</a>
+                </p>
                 <p class="card-text">{{ movie.description }}</p>
                 <p><strong>Release:</strong> {{ movie.release_date }}</p>
                 <p><strong>Duration:</strong> {{ movie.duration }}</p>

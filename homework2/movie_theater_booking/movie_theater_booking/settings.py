@@ -1,3 +1,5 @@
+# Add a proxy prefix for use in templates
+PROXY_PREFIX = "/proxy/8000"
 """
 Django settings for movie_theater_booking project.
 
