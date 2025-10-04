@@ -1,0 +1,21 @@
+version: 1
+services:
+  web:
+    type: web
+    name: movie-theater-booking
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python manage.py runserver 0.0.0.0:10000
+    envVars:
+      DJANGO_SETTINGS_MODULE: movie_theater_booking.settings
+      SECRET_KEY: your_secret_key_here
+      DEBUG: 'false'
+      ALLOWED_HOSTS: your_render_app_url_here
+    autoDeploy: true
+    healthCheckPath: /
+    healthCheckInterval: 10
+    healthCheckTimeout: 5
+    healthCheckRetries: 3
+    healthCheckSuccessThreshold: 1
+    healthCheckFailureThreshold: 3

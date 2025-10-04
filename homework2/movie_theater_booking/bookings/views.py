@@ -1,11 +1,12 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from .models import Movie, Seat, Booking
 from .serializers import MovieSerializer, SeatSerializer, BookingSerializer
-from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.db import transaction, IntegrityError
 import logging
@@ -80,22 +81,41 @@ def booking_history(request):
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class SeatViewSet(viewsets.ModelViewSet):
     queryset = Seat.objects.all()
     serializer_class = SeatSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    @action(detail=True, methods=['get'])
+    def availability(self, request, pk=None):
+        seat = self.get_object()
+        # Adjust the availability logic to your models (e.g., consider showtime or movie)
+        is_booked = Booking.objects.filter(seat=seat).exists()
+        return Response({'seat_id': seat.pk, 'available': not is_booked})
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
+    def book(self, request, pk=None):
+        seat = self.get_object()
+        data = {'seat': seat.pk}
+        # Include extra fields if your Booking model requires them (e.g., movie/showtime)
+        serializer = BookingSerializer(data=data, context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        booking = serializer.save(user=request.user)
+        return Response(BookingSerializer(booking).data, status=status.HTTP_201_CREATED)
 
 class BookingViewSet(viewsets.ModelViewSet):
-    queryset = Booking.objects.all()
+    queryset = Booking.objects.all().select_related('user', 'seat')
     serializer_class = BookingSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # Show only bookings for the logged-in user
-        return Booking.objects.filter(user=self.request.user)
+        # Users see their own bookings only
+        user = self.request.user
+        return super().get_queryset().filter(user=user)
 
     def perform_create(self, serializer):
-        # Automatically assign the booking to the logged-in user
         serializer.save(user=self.request.user)
 
 
