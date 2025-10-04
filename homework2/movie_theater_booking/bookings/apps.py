@@ -29,25 +29,25 @@ class BookingsConfig(AppConfig):
                 }
             )
             Movie.objects.get_or_create(
-                title='The Great Adventure',
+                title='The Great Gatsby',
                 defaults={
-                    'description': 'An epic journey across uncharted lands.',
+                    'description': 'The green light or something.',
                     'release_date': '2024-12-15',
                     'duration': timedelta(hours=2, minutes=15),
                 }
             )
             Movie.objects.get_or_create(
-                title='Comedy Night',
+                title='The Hangover',
                 defaults={
-                    'description': 'A hilarious night of stand-up comedy.',
+                    'description': 'A comedy about a bachelor party gone wrong.',
                     'release_date': '2025-02-10',
                     'duration': timedelta(hours=1, minutes=45),
                 }
             )
             Movie.objects.get_or_create(
-                title='Space Odyssey',
+                title='Interstellar',
                 defaults={
-                    'description': 'A sci-fi adventure beyond the stars.',
+                    'description': 'A sci-fi epic about space exploration and time dilation.',
                     'release_date': '2025-03-20',
                     'duration': timedelta(hours=2, minutes=30),
                 }
