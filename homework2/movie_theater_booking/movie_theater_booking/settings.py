@@ -1,4 +1,5 @@
 import dj_database_url 
+import os
 
 # Add a proxy prefix for use in templates
 PROXY_PREFIX = "/proxy/8000"
@@ -126,9 +127,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Ensure STATIC_ROOT is set so collectstatic / staticfiles app works in production
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # pathlib.Path is fine; use str(BASE_DIR / 'staticfiles') if you prefer
 
+if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
