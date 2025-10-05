@@ -1,5 +1,5 @@
 databases:
-  - name: movie_theater_bookingdb
+  - name: movie_theater_booking
     plan: free
     databaseName: movie_theater_booking
     user: movie_theater_booking
